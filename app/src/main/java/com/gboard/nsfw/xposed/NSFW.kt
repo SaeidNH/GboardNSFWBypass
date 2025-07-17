@@ -1,4 +1,4 @@
-package com.nsfw.hook;
+package com.gboard.nsfw.xposed;
 
 import android.net.Uri;
 import de.robv.android.xposed.IXposedHookLoadPackage;
@@ -7,7 +7,7 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage;
 
 import static de.robv.android.xposed.XposedHelpers.*;
 
-public class HookEntry implements IXposedHookLoadPackage {
+public class NSFW implements IXposedHookLoadPackage {
     @Override
     public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpparam) throws Throwable {
         if (!lpparam.packageName.equals("com.google.android.inputmethod.latin")) return;
