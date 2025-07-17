@@ -39,10 +39,6 @@ android {
 }
 
 dependencies {
-    // If libs.xposed is defined in libs.versions.toml
-    compileOnly(libs.xposed)
-
-    // Fallback in case libs.xposed is not resolving in GitHub Actions or local IDE
+    // Hardcode the Xposed API dependency directly
     compileOnly("de.robv.android.xposed:api:82")
-    implementation("de.robv.android.xposed:api:82") // Only needed for compile-time resolution
 }
