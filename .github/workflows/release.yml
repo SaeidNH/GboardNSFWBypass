@@ -1,4 +1,5 @@
 name: Release CI
+
 on:
   workflow_dispatch:
     inputs:
@@ -11,6 +12,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -42,19 +44,21 @@ jobs:
           keyPassword: ${{ secrets.ALIAS_KEY_PASSWORD }}
           zipAlign: false
 
-      - name: Process file
+      - name: Rename APK for Gboard v15.5
         run: |
           cd app/build/outputs/apk/release/
           shopt -s extglob
           rm !(*-signed*)
-          mv app-release-unsigned-signed.apk nsfw-gboard-v${{ env.version }}.apk
+          mv app-release-unsigned-signed.apk gboard-nsfw-v15.5-${{ env.version }}.apk
+          # 🔧 Modified: Custom APK name includes Gboard v15.5 tag
 
       - uses: ncipollo/release-action@v1.14.0
         with:
           prerelease: ${{ inputs.prerelease }}
           tag: v${{ env.version }}
           name: "v${{ env.version }}"
-          artifacts: app/build/outputs/apk/release/nsfw-gboard-v${{ env.version }}.apk
-          token: ${{secrets.TOKEN}}
+          artifacts: app/build/outputs/apk/release/gboard-nsfw-v15.5-${{ env.version }}.apk
+          # 🔧 Modified: Artifact name matches updated APK
+          token: ${{ secrets.TOKEN }}
           replacesArtifacts: true
           allowUpdates: true
