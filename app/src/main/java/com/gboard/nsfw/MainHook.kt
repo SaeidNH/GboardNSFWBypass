@@ -17,7 +17,7 @@ class MainHook : IXposedHookLoadPackage {
         XposedBridge.log("Initializing... NSFW Gboard Hook...")
         try {
             val task = NSFW()
-            NSFW.setClassLoader(classLoader)
+            NSFW.setClassLoader(classLoader) // ✅ Fixed: method now exists
             Thread(FutureTask<Void>(task)).start()
         } catch (ignored: Throwable) {
             XposedBridge.log("Failed to start NSFW Gboard hook")
