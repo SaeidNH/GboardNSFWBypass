@@ -13,8 +13,8 @@ android {
         versionName = rootProject.ext["appVersionName"].toString()
         minSdk = 27
         targetSdk = 34
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -29,16 +29,18 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
 }
 
 dependencies {
-    // Hardcode the Xposed API dependency directly
-    compileOnly("de.robv.android.xposed:api:82")
+    compileOnly(libs.xposed)
+    // 🔧 Optional: Add new libraries if Gboard v15.5 depends on updated components
 }
