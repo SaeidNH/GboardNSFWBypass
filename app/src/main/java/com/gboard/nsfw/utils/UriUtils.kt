@@ -3,7 +3,6 @@ package com.gboard.nsfw.utils
 import android.net.Uri
 
 object UriUtils {
-// 🔧 Modified: Added Gboard v15.5 specific parameters to remove
     fun removeUriParameters(uri: Uri, keysToRemove: List<String?>): Uri.Builder {
         val builder = uri.buildUpon()
         val queryParameterNames = uri.getQueryParameterNames()
@@ -18,6 +17,7 @@ object UriUtils {
         }
         return newUri
     }
-    
-// 🔧 Suggested usage example for Gboard v15.5:
-val keysToRemove = listOf("safe", "client", "gs_ri", "ei")
+
+    // 🔧 Usage Example for v15.5:
+    // val keysToRemove = listOf("safe", "client", "gs_ri", "ei")
+}
