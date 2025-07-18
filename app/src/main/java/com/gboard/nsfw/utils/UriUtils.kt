@@ -2,7 +2,6 @@ package com.gboard.nsfw.utils
 
 import android.net.Uri
 
-
 object UriUtils {
     fun removeUriParameters(uri: Uri, keysToRemove: List<String?>): Uri.Builder {
         val builder = uri.buildUpon()
@@ -18,5 +17,7 @@ object UriUtils {
         }
         return newUri
     }
-}
 
+    // 🔧 Usage Example for v15.5:
+    // val keysToRemove = listOf("safe", "client", "gs_ri", "ei")
+}
